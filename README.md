@@ -97,6 +97,14 @@ Tuỳ thuộc vào loại thiết bị sẽ sử dụng mà chọn thiết bị 
 
                 changeDevice(type);
 
+ Trong đó: 
+ - type = 1: nghe gọi trên trình duyệt
+ - type = 2: nghe gọi qua softphone, IP Phone
+
+Trong trường hợp muốn tắt trình duyệt đi mà vẫn tiếp nhận được cuộc gọi qua GSM, chuyển type = 3 và truyền vào số điện thoại di động sẽ tiếp nhận cuộc gọi.
+
+                changeDevice(3, '093xxxxxxxx');
+
 Sau khi F5, hoặc đăng xuất, không sử dụng nữa thì phải huỷ đăng ký gọi và chuyển về thiết bị gọi mặc định để có thể tiếp tục sử dụng bình thường bằng cách sử dụng đoạn code sau:
 
                 $(window).bind('unload', function () {
