@@ -130,6 +130,8 @@ Sau khi F5, hoặc đăng xuất, không sử dụng nữa thì phải huỷ đ�
 
 - Ngoài ra, khi muốn thay đổi giao diện hoặc xử lý thông tin mỗi khi có một sự kiện của cuộc gọi, 3C hỗ trợ các hàm sau
 
+**Chú ý: Tất cả các hàm dưới đây đều phải được implement để đảm bảo tính đúng đắn của chương trình**
+
 | STT | Hàm | Bắt buộc | Mô tả |
 | --- | --- | --- | --- |
 | 1 | csCallRinging(phone) |   | Sự kiện này được gọi khi có cuộc gọi đến nhân viên (phone là số điện thoại gọi đến) |
