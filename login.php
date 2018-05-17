@@ -16,7 +16,8 @@
     $curl_handle = curl_init();
     curl_setopt($curl_handle, CURLOPT_URL, 'https://3c-capi.mobifone.vn/{{domain}}/thirdParty/login');
     curl_setopt($curl_handle, CURLOPT_SSL_VERIFYPEER, FALSE);
-    curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1{{domain}}l_setopt($curl_handle, CURLOPT_POST, 1);
+    curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($curl_handle, CURLOPT_POST, 1);
     curl_setopt($curl_handle, CURLOPT_POSTFIELDS, array('token' => $token));
     $buffer = curl_exec($curl_handle);					
     curl_close($curl_handle);
