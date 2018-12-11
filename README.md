@@ -127,6 +127,10 @@ Sau khi F5, hoặc đăng xuất, không sử dụng nữa thì phải huỷ đ�
 | 7 | muteCall(); | Mute/Unmute cuộc gọi. Sự kiện này được gọi khi cuộc gọi bị Mute. Hàm này chỉ hoạt động cho cuộc gọi nhận từ khách hàng, không hoạt động cho cuộc gọi ra |
 | 8 | changeDevice(type) | Thay đổi thiết bị tiếp nhận cuộc gọi |
 | 9 | reConfigDeviceType() | Đối với nhân viên có vai trò Extension, Mobile hay 3C Softphone, khi đăng nhập vào để gọi điện sẽ gây bất đồng bộ khiến không thể tiếp nhận cuộc gọi trên các thiết bị mặc định được nữa. Gọi hàm này khi đăng xuất hoặc F5 web tích hợp để chuyển thiết bị nhân viên này về mặc định và tiếp nhận cuộc gọi như bình thường |
+| 10 | getTransferAgent() | Lấy thông tin agent đang online |
+| 11 | csTransferCallAgent(ipphone) | Chuyển cuộc gọi qua agent khác, `ipphone` số ipphone của agent muốn chuyển,Chú ý: agent phải đang trong cuộc gọi mới có thể chuyển cuộc gọi |
+| 12 | csTransferCallAcd(queueId) | Chuyển cuộc gọi qua nhánh acd khác, `queueId` id của nhánh acd muốn chuyển,Chú ý: agent phải đang trong cuộc gọi mới có thể chuyển cuộc gọi |
+| 13 | responseTransferAgent(action) | Tiếp nhận cuộc gọi được chuyển,`action=1` đồng ý,`action=0` từ chối |
 
 - Ngoài ra, khi muốn thay đổi giao diện hoặc xử lý thông tin mỗi khi có một sự kiện của cuộc gọi, 3C hỗ trợ các hàm sau
 
@@ -148,6 +152,13 @@ Sau khi F5, hoặc đăng xuất, không sử dụng nữa thì phải huỷ đ�
 | 12 | csCustomerAccept() |   | Sự kiện này được gọi khi khách hàng nghe cuộc gọi đối với cuộc gọi ra |
 | 13 | csShowDeviceType(type) |   | Sự kiện này được gọi khi thông tin loại thiết bị đang dùng để tiếp nhận cuộc gọi thay đổi (1: gọi bằng trình duyệt, 2: nhận cuộc gọi qua IP phone nhưng phải đăng nhập vào mới tiếp nhận được, 4: nhận cuộc gọi qua IP phone nhưng không cần đăng nhập vào) |
 | 14 | csCurrentCallId(callId) |   | Sự kiện xảy ra khi có cuộc gọi đang diễn ra và trả về callId của cuộc gọi |
+| 15 | csInitError(errorCode) |   | Sự kiện này xảy ra khi thiết lập thông số không thành công và sẽ trả về mã lỗi(token lỗi, lỗi kết nối,…) |
+| 16 | csInitComplete() |   | Sự kiện được gọi khi thiết lập thành công mọi thông số và đã sẵn sang để bắt đầu nhận hay tiếp nhận cuôc gọi **Lưu ý** : Trong trường hợp muốn kích hoạt thoại luôn thì sẽ gọi hàm **csEnableCall()** trong hàm này |
+| 17 | csListTransferAgent(listTransferAgent) |   | Sự kiện được gọi khi lấy thành công list agent đang online |
+| 18 | csTransferCallError(error, tranferedAgentInfo) |   | Sự kiện được gọi khi chuyển cuộc gọi thất bại. `error` là mã lỗi trả về, `tranferedAgentInfo` là thông tin agent được chuyển (có thể null) |
+| 19 | csTransferCallSuccess(tranferedAgentInfo) |   | Sự kiện được gọi khi chuyển cuộc gọi thành công. `tranferedAgentInfo` là thông tin agent được chuyển |
+| 20 | csNewCallTransferRequest(transferCall) |   | Sự kiện được gọi khi có một cuộc gọi được chuyển  |
+| 21 | csTransferCallResponse(status) |   | Sự kiện được gọi khi người được chuyển cuộc gọi bấm từ chối hoặc tiếp nhận yêu cầu. `status=OK` tiếp nhận,`status=NOK` từ chối  |
 
 **Các hàm này đã được để trong file custom.js**
 
@@ -166,3 +177,12 @@ Phụ lục: Bảng mã lỗi khi gọi ra
 | 9 | CALLOUT\_AGENT\_BUSY |   | Mã trả về 786 - Busy. Vui lòng đăng xuất và đăng nhập lại để tiếp tục sử dụng. |
 | 10 | CALLOUT\_PERMISSION\_DENY |   | Không có quyền gọi ra. Liên hệ Admin để cấu hình |
 | 11 | ERROR\_CALLOUT\_CONNECT |   | Có lỗi xảy ra |
+
+Bảng mã lỗi khi chuyển cuộc gọi
+
+| STT | Error Code | Sip Code | Mô tả |
+| --- | --- | --- | --- |
+| 1 | NOT\_CHOOSE\_TYPE\_TRANSFER | | Chưa chọn loại chuyển cuộc gọi |
+| 2 | TRANSFER\_CALL\_FAILED | | Chuyển cuộc gọi thất bại |
+| 3 | NOT\_IN\_A\_CALL | | Không trong cuộc gọi |
+| 4 | COULD\_NOT\_GET\_CALL\_INFO | | Không thể lấy thông tin cuộc gọi |
