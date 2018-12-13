@@ -160,6 +160,8 @@ Sau khi F5, hoặc đăng xuất, không sử dụng nữa thì phải huỷ đ�
 | 20 | csNewCallTransferRequest(transferCall) |   | Sự kiện được gọi khi có một cuộc gọi được chuyển  |
 | 21 | csTransferCallResponse(status) |   | Sự kiện được gọi khi người được chuyển cuộc gọi bấm từ chối hoặc tiếp nhận yêu cầu. `status=OK` tiếp nhận,`status=NOK` từ chối  |
 
+**Chú ý:csTransferCallError,csTransferCallSuccess,csNewCallTransferRequest chỉ áp dụng cho cuộc gọi chuyển từ agent sang agent , không áp dụng cho cuộc gọi chuyển nhánh, cuộc gọi chuyển nhánh sẽ hoạt động như 1 cuộc gọi vào bình thường**
+
 **Các hàm này đã được để trong file custom.js**
 
 Phụ lục: Bảng mã lỗi khi gọi ra
