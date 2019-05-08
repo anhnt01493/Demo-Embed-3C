@@ -159,6 +159,8 @@ Sau khi F5, hoặc đăng xuất, không sử dụng nữa thì phải huỷ đ�
 | 19 | csTransferCallSuccess(tranferedAgentInfo) |   | Sự kiện được gọi khi chuyển cuộc gọi thành công. `tranferedAgentInfo` là thông tin agent được chuyển |
 | 20 | csNewCallTransferRequest(transferCall) |   | Sự kiện được gọi khi có một cuộc gọi được chuyển  |
 | 21 | csTransferCallResponse(status) |   | Sự kiện được gọi khi người được chuyển cuộc gọi bấm từ chối hoặc tiếp nhận yêu cầu. `status=OK` tiếp nhận,`status=NOK` từ chối  |
+| 22 | csNotifyReconnecting(retryNo,totalRetry) |   | Sự kiện được gọi khi hệ thống bị mất kết nối và đang thử kết nối lại `retryNo:Số lần đã thực hiện kết nối lại`,`totalRetry: Tổng số lần thực hiện kết nối lại cho phép`  |
+| 23 | csOndisconnected() |   | Sự kiện được gọi khi hệ thống thực hiện quá số lần kết nối lại cho phép, lúc này hệ thống sẽ không tự kết nối lại nữa  |
 
 **Chú ý:csTransferCallError,csTransferCallSuccess,csNewCallTransferRequest chỉ áp dụng cho cuộc gọi chuyển từ agent sang agent , không áp dụng cho cuộc gọi chuyển nhánh, cuộc gọi chuyển nhánh sẽ hoạt động như 1 cuộc gọi vào bình thường**
 
