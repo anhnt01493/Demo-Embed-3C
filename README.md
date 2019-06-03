@@ -190,3 +190,13 @@ Bảng mã lỗi khi chuyển cuộc gọi
 | 2 | TRANSFER\_CALL\_FAILED | | Chuyển cuộc gọi thất bại |
 | 3 | NOT\_IN\_A\_CALL | | Không trong cuộc gọi |
 | 4 | COULD\_NOT\_GET\_CALL\_INFO | | Không thể lấy thông tin cuộc gọi |
+
+Bảng mã lỗi khi đăng nhập qua /api/thirdParty/login
+
+| STT | Error Code | Mô tả |
+| --- | --- | --- |
+| 1 | 404 | Không tìm thấy domain |
+| 2 | 405 | Domain đã hết hạn sử dụng |
+| 3 | 401 | Sai token/token hết hạn sử dụng |
+| 4 | 400 | ipphone không đúng/không tồn tại |
+| 5 | 500 | Lỗi hệ thống |
